@@ -5,8 +5,8 @@ import java.util.*;
 import model.SlangEntry;
 
 public class DataManager {
-    public static LinkedHashMap<String, SlangEntry> load(String filePath) throws IOException {
-        LinkedHashMap<String, SlangEntry> map = new LinkedHashMap<>();
+    public static HashMap<String, SlangEntry> load(String filePath) throws IOException {
+        HashMap<String, SlangEntry> map = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(filePath));
         String line;
 
@@ -21,13 +21,12 @@ public class DataManager {
         return map;
     }
 
-    public static void save(LinkedHashMap<String, SlangEntry> dict, String filePath) throws IOException {
+    public static void save(HashMap<String, SlangEntry> dict, String filePath) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
         for (SlangEntry entry : dict.values()) {
             bw.write(entry.getWord() + "`" + String.join("|", entry.getDefinitions()));
             bw.newLine();
         }
-
         bw.close();
     }
 }

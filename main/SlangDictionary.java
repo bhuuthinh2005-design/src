@@ -7,9 +7,11 @@ import java.util.*;
 public class SlangDictionary {
     private HashMap<String, SlangEntry> dict = new HashMap<>();
     private List<String> history = new ArrayList<>();
+    private String savePath = "data/slang_saved.txt";
 
     public SlangDictionary(String filePath) throws IOException {
-        dict = DataManager.load(filePath); 
+        dict = DataManager.load(filePath);
+        this.savePath = filePath;
     }
 
     public SlangEntry searchBySlang(String key) {
@@ -38,7 +40,7 @@ public class SlangDictionary {
     public List<String> getHistory() {
         return history;
     }
-    
+
     public void printHistory(){
         if (history.isEmpty()) {
             System.out.println("History is empty.");
@@ -49,5 +51,34 @@ public class SlangDictionary {
         for (String h : history) {
             System.out.println(h);
         }
+    }
+
+    public void addSlang(Scanner scanner, String word, List<String> defs)  throws IOException {
+        if (dict.containsKey(word)) {
+            System.out.println("Slang word already exists: " + word);
+            System.out.println("Do you want to:");
+            System.out.println("1. Overwrite existing slang");
+            System.out.println("2. Duplicate (add new definition)");
+            System.out.print("Your choice: ");
+
+            int choice = Integer.parseInt(scanner.nextLine());
+
+            if (choice == 1) {
+                dict.put(word, new SlangEntry(word, new ArrayList<>(defs)));
+                System.out.println("Slang overwritten.");
+            } else if (choice == 2) {
+                SlangEntry existing = dict.get(word);
+                for (String d : defs) {
+                    existing.addDefinition(d);
+                }
+                System.out.println("Slang duplicated.");
+            } else {
+                System.out.println("Invalid choice. Cancel add slang.");
+            }
+        } else {
+            dict.put(word, new SlangEntry(word, new ArrayList<>(defs)));
+            System.out.println("New slang added.");
+        }
+        DataManager.save(dict, savePath);
     }
 }
