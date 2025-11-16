@@ -1,6 +1,5 @@
 package main;
 
-
 public class TestSlangDictionary {
     public static void main(String[] args) {
         try {
@@ -14,6 +13,12 @@ public class TestSlangDictionary {
             System.out.println("Search: 'too'");
             System.out.println("Result: " + dict.searchByDefinition("too"));
 
+            // TEST 3: get history
+            dict.searchBySlang("LOL");
+            dict.searchBySlang("BRB");
+            dict.searchBySlang(">:(");
+            dict.searchBySlang("NOT_EXIST");   
+            dict.printHistory();
         } catch (Exception e) {
             e.printStackTrace();
         }
