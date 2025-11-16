@@ -16,4 +16,17 @@ public class SlangDictionary {
         return result;
     }
 
+    public List<String> searchByDefinition(String keyword) {
+        List<String> results = new ArrayList<>();
+        for (SlangEntry entry : dict.values()) {
+            for (String def : entry.getDefinitions()) {
+                if (def.toLowerCase().contains(keyword.toLowerCase())) {
+                    results.add(entry.getWord());
+                }
+            }
+        }
+
+        return results;
+    }
+
 }
