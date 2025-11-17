@@ -90,4 +90,16 @@ public class SlangDictionary {
         System.out.println("Slang edited.");
     }
 
+    public void deleteSlang(Scanner scanner, String word) throws IOException {
+        if (!dict.containsKey(word)) {
+            System.out.println("Not found.");
+            return;
+        }
+
+        System.out.print("Are you sure to delete? (y/n): ");
+        if (!scanner.nextLine().equalsIgnoreCase("y")) return;
+        dict.remove(word);
+        DataManager.save(dict, savePath);
+        System.out.println("Slang deleted.");
+    }
 }

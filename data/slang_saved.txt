@@ -4963,7 +4963,6 @@ PURP`PURPLE
 WAIFU`Wife
 LOI`Laughing On the Inside
 MLIM`My Life Is Magic
-LOL`Laugh Out Loud|Very Funny
 LOK`LOL OK
 NOLY`No One Likes You
 PREGGO`Pregnant
