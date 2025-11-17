@@ -60,9 +60,7 @@ public class SlangDictionary {
             System.out.println("1. Overwrite existing slang");
             System.out.println("2. Duplicate (add new definition)");
             System.out.print("Your choice: ");
-
             int choice = Integer.parseInt(scanner.nextLine());
-
             if (choice == 1) {
                 dict.put(word, new SlangEntry(word, new ArrayList<>(defs)));
                 System.out.println("Slang overwritten.");
@@ -81,4 +79,15 @@ public class SlangDictionary {
         }
         DataManager.save(dict, savePath);
     }
+
+    public void editSlang(String word, List<String> defs) throws IOException {
+        if (!dict.containsKey(word)) {
+            System.out.println("Slang not found.");
+            return;
+        }
+        dict.put(word, new SlangEntry(word, new ArrayList<>(defs)));
+        DataManager.save(dict, savePath);
+        System.out.println("Slang edited.");
+    }
+
 }

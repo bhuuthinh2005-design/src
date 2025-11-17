@@ -1,7 +1,6 @@
 package main;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class TestSlangDictionary {
     public static void main(String[] args) {
@@ -24,12 +23,17 @@ public class TestSlangDictionary {
             // dict.printHistory();
 
             // TEST 4: add slang
-            Scanner scanner = new Scanner(System.in);
-            dict.addSlang(scanner, "UWU", List.of("Cute"));
-            System.out.println("Result: " + dict.searchBySlang("UWU"));
+            // Scanner scanner = new Scanner(System.in);
+            // dict.addSlang(scanner, "UWU", List.of("Cute"));
+            // System.out.println("Result: " + dict.searchBySlang("UWU"));
 
-            dict.addSlang(scanner, "LOL", List.of("Fun"));
-            System.out.println("Result: " + dict.searchBySlang("LOL"));
+            // dict.addSlang(scanner, "LOL", List.of("Fun"));
+            // System.out.println("Result: " + dict.searchBySlang("LOL"));
+            // TEST 5: edit slang
+            dict.editSlang("LOL", List.of("Laugh Out Loud", "Very Funny"));
+            System.out.println("Result: " + dict.searchBySlang("LOL").getDefinitions());
+            dict.editSlang("NOT_EXIST", List.of("No meaning"));
+            System.out.println("Result: " + dict.searchBySlang("NOT_EXIST"));
 
         } catch (Exception e) {
             e.printStackTrace();
