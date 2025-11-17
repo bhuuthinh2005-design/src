@@ -1857,7 +1857,7 @@ UWS`Upper West Side
 PA`Personal Assistant
 TIEF`Thief| thieve
 PB`Personal Best
-UWU`Cute
+UWU`Happy Anime Face
 DVD`Digital Versatile Disc
 PC`Politically Correct| Personal Computer
 LAMO`LMAO
@@ -4963,6 +4963,7 @@ PURP`PURPLE
 WAIFU`Wife
 LOI`Laughing On the Inside
 MLIM`My Life Is Magic
+LOL`Laughing Out Loud
 LOK`LOL OK
 NOLY`No One Likes You
 PREGGO`Pregnant

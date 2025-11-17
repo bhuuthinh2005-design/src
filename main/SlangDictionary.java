@@ -11,7 +11,6 @@ public class SlangDictionary {
 
     public SlangDictionary(String filePath) throws IOException {
         dict = DataManager.load(filePath);
-        this.savePath = filePath;
     }
 
     public SlangEntry searchBySlang(String key) {
@@ -101,5 +100,17 @@ public class SlangDictionary {
         dict.remove(word);
         DataManager.save(dict, savePath);
         System.out.println("Slang deleted.");
+    }
+
+    public void reset() {
+        try {
+            HashMap<String, SlangEntry> original = DataManager.load("data/slang.txt");
+            DataManager.save(original, savePath);
+            dict = original;
+            System.out.println("Slang dictionary has been reset to original data!");
+        } catch (IOException e) {
+            System.out.println("Error resetting slang dictionary.");
+            e.printStackTrace();
+        }
     }
 }

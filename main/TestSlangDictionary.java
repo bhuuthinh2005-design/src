@@ -26,18 +26,21 @@ public class TestSlangDictionary {
             // Scanner scanner = new Scanner(System.in);
             // dict.addSlang(scanner, "UWU", List.of("Cute"));
             // System.out.println("Result: " + dict.searchBySlang("UWU"));
-
-            // dict.addSlang(scanner, "LOL", List.of("Fun"));
-            // System.out.println("Result: " + dict.searchBySlang("LOL"));
             // TEST 5: edit slang
             // dict.editSlang("LOL", List.of("Laugh Out Loud", "Very Funny"));
             // System.out.println("Result: " + dict.searchBySlang("LOL").getDefinitions());
             // dict.editSlang("NOT_EXIST", List.of("No meaning"));
             // System.out.println("Result: " + dict.searchBySlang("NOT_EXIST"));
-            //TEST 6: delete slang
+            // TEST 6: delete slang
+            // Scanner scanner = new Scanner(System.in);
+            // dict.deleteSlang(scanner, "ELOL");
+            // System.out.println("Check search result: " + dict.searchBySlang("ELOL"));
+            // TEST 8: reset slang list
             Scanner scanner = new Scanner(System.in);
-            dict.deleteSlang(scanner, "ELOL");
-            System.out.println("Check search result: " + dict.searchBySlang("ELOL"));
+            dict.addSlang(scanner, "UWU", List.of("Cute"));
+            System.out.println("Before reset: " + dict.searchBySlang("UWU"));
+            dict.reset();
+            System.out.println("After reset: " + dict.searchBySlang("UWU"));
         } catch (Exception e) {
             e.printStackTrace();
         }
