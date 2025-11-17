@@ -114,6 +114,12 @@ public class SlangDictionary {
         }
     }
 
+    public String randomKey() {
+        List<String> keys = new ArrayList<>(dict.keySet());
+        Random rand = new Random();
+        return keys.get(rand.nextInt(keys.size()));
+    }
+
     public SlangEntry randomSlang() {
         if (dict.isEmpty()) return null;
         List<String> keys = new ArrayList<>(dict.keySet());
@@ -131,4 +137,30 @@ public class SlangDictionary {
         return dict.get(randomKey);
     }
 
+    public void quizSlangToDefinition(Scanner scanner) {
+        String questionSlang = randomKey();
+        SlangEntry correctEntry = dict.get(questionSlang);
+        String correctDef = correctEntry.getDefinitions().get(0);
+        Set<String> options = new HashSet<>();
+        options.add(correctDef);
+        while (options.size() < 4) {
+            String random = randomKey();
+            String def = dict.get(random).getDefinitions().get(0);
+            options.add(def);
+        }
+
+        List<String> answers = new ArrayList<>(options);
+        Collections.shuffle(answers);
+        System.out.println("What is the definition of: " + questionSlang + " ?");
+        for (int i = 0; i < answers.size(); i++) {
+            System.out.println((i+1) + ". " + answers.get(i));
+        }
+        System.out.print("Your answer (1-4): ");
+        int choice = Integer.parseInt(scanner.nextLine());
+        if (answers.get(choice - 1).equals(correctDef)) {
+            System.out.println("Correct!");
+        } else {
+            System.out.println("Wrong! Correct answer is: " + correctDef);
+        }
+    }
 }

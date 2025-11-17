@@ -43,14 +43,17 @@ public class TestSlangDictionary {
             // System.out.println("Before reset: " + dict.searchBySlang("UWU"));
             // dict.reset();
             // System.out.println("After reset: " + dict.searchBySlang("UWU"));
-            for (int i = 0; i < 5; i++) {
-                SlangEntry entry = dict.randomSlang();
-                System.out.println(entry.getWord() + " = " + entry.getDefinitions());
-            }
-            System.out.println("\n=== Slang of the day ===");
-            SlangEntry today = dict.randomSlangOfDay();
-            System.out.println(today.getWord() + " = " + today.getDefinitions());
-
+            // for (int i = 0; i < 5; i++) {
+            //     SlangEntry entry = dict.randomSlang();
+            //     System.out.println(entry.getWord() + " = " + entry.getDefinitions());
+            // }
+            // System.out.println("\n=== Slang of the day ===");
+            // SlangEntry today = dict.randomSlangOfDay();
+            // System.out.println(today.getWord() + " = " + today.getDefinitions());
+            // TEST 9: quiz slang to definition
+            Scanner scanner = new Scanner(System.in);
+            dict.quizSlangToDefinition(scanner);
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
