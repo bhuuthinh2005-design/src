@@ -2,6 +2,8 @@ package main;
 
 import java.util.*;
 
+import model.SlangEntry;
+
 public class TestSlangDictionary {
     public static void main(String[] args) {
         try {
@@ -36,11 +38,19 @@ public class TestSlangDictionary {
             // dict.deleteSlang(scanner, "ELOL");
             // System.out.println("Check search result: " + dict.searchBySlang("ELOL"));
             // TEST 8: reset slang list
-            Scanner scanner = new Scanner(System.in);
-            dict.addSlang(scanner, "UWU", List.of("Cute"));
-            System.out.println("Before reset: " + dict.searchBySlang("UWU"));
-            dict.reset();
-            System.out.println("After reset: " + dict.searchBySlang("UWU"));
+            // Scanner scanner = new Scanner(System.in);
+            // dict.addSlang(scanner, "UWU", List.of("Cute"));
+            // System.out.println("Before reset: " + dict.searchBySlang("UWU"));
+            // dict.reset();
+            // System.out.println("After reset: " + dict.searchBySlang("UWU"));
+            for (int i = 0; i < 5; i++) {
+                SlangEntry entry = dict.randomSlang();
+                System.out.println(entry.getWord() + " = " + entry.getDefinitions());
+            }
+            System.out.println("\n=== Slang of the day ===");
+            SlangEntry today = dict.randomSlangOfDay();
+            System.out.println(today.getWord() + " = " + today.getDefinitions());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

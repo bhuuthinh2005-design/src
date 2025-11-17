@@ -113,4 +113,22 @@ public class SlangDictionary {
             e.printStackTrace();
         }
     }
+
+    public SlangEntry randomSlang() {
+        if (dict.isEmpty()) return null;
+        List<String> keys = new ArrayList<>(dict.keySet());
+        Random rand = new Random();
+        String randomKey = keys.get(rand.nextInt(keys.size()));
+        return dict.get(randomKey);
+    }
+
+    public SlangEntry  randomSlangOfDay() {
+        if (dict.isEmpty()) return null;
+        List<String> keys = new ArrayList<>(dict.keySet());
+        long daySeed = System.currentTimeMillis() / (24 * 60 * 60 * 1000);
+        Random rand = new Random(daySeed);
+        String randomKey = keys.get(rand.nextInt(keys.size()));
+        return dict.get(randomKey);
+    }
+
 }
