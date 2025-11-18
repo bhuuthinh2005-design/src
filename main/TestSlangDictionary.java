@@ -52,7 +52,8 @@ public class TestSlangDictionary {
             // System.out.println(today.getWord() + " = " + today.getDefinitions());
             // TEST 9: quiz slang to definition
             Scanner scanner = new Scanner(System.in);
-            dict.quizSlangToDefinition(scanner);
+            // dict.quizSlangToDefinition(scanner);
+            dict.quizDefinitionToSlang(scanner);
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();

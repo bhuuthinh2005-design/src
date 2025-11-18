@@ -163,4 +163,29 @@ public class SlangDictionary {
             System.out.println("Wrong! Correct answer is: " + correctDef);
         }
     }
+
+    public void quizDefinitionToSlang(Scanner scanner) {
+        String correctSlang = randomKey();
+        SlangEntry entry = dict.get(correctSlang);
+        String questionDef = entry.getDefinitions().get(0);
+        Set<String> options = new HashSet<>();
+        options.add(correctSlang);
+        while (options.size() < 4) {
+            options.add(randomKey());
+        }
+        List<String> answers = new ArrayList<>(options);
+        Collections.shuffle(answers);
+        System.out.println("Which slang has the definition: " + questionDef + " ?");
+        for (int i = 0; i < answers.size(); i++) {
+            System.out.println((i+1) + ". " + answers.get(i));
+        }
+        System.out.print("Your answer (1-4): ");
+        int choice = Integer.parseInt(scanner.nextLine());
+        if (answers.get(choice - 1).equals(correctSlang)) {
+            System.out.println("Correct!");
+        } else {
+            System.out.println("Wrong! Correct answer is: " + correctSlang);
+        }
+    }
+
 }
